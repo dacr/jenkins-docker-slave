@@ -1,13 +1,8 @@
 FROM dacr/jenkins-slave
 MAINTAINER crosson.david@gmail.com
 
-USER root
-
-ENV TERM xterm
-
 RUN curl -sSL https://get.docker.com/ | sh
 
-RUN usermod -aG docker jenkins
-
-USER jenkins
+RUN curl -L https://github.com/docker/compose/releases/download/1.5.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose \
+ && chmod +x /usr/local/bin/docker-compose
 
